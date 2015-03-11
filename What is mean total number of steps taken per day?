@@ -23,3 +23,6 @@ type = "count")
 mean_original <- mean(total_steps)
 #calculate median
 median_original<- median(total_steps)
+
+mean=10766
+median=10765
