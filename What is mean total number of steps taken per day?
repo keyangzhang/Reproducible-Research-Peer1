@@ -1,0 +1,25 @@
+# assign values to the columns
+steps <- data_$steps
+date <- data_$date
+interval <- data_$interval
+
+# eliminate the NAs
+filter <- !is.na(steps)
+
+filter_steps <- steps[filter]
+filter_date <- date[filter]
+
+days_factor <- factor(filter_date)
+
+# total number
+total_steps <- tapply(filter_steps, days_factor, FUN = sum)
+
+histogram(total_steps, breaks = 10, 
+ xlab = "Total number of steps per day", 
+ main = "Distribution of total steps per day", 
+col = "lightblue", 
+type = "count")
+# calculate mean
+mean_original <- mean(total_steps)
+#calculate median
+median_original<- median(total_steps)
