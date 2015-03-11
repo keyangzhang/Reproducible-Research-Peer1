@@ -1,0 +1,14 @@
+date_new <- as.Date(date)
+
+whichDay <- weekdays(date_new)
+
+weekendDays <- c("Saturday", "Sunday")
+
+DF <- data.frame(date_new, interval_factor, new_steps, whichDay)
+
+isWeekend <- DF$whichDay %in% weekendDays
+
+DF$dayType = factor(isWeekend,labels = c("Weekday","Weekend"))
+
+xyplot(DF$new_steps ~ interval | DF$dayType, layout = c(2, 1), type = "l", 
+xlab = "Time interval", ylab = "Number of steps", main = "Time series of number of steps vs time interval" )
