@@ -1,0 +1,25 @@
+length(steps[is.na(steps)])
+new_steps <- steps
+
+for (i in which(sapply(new_steps, is.na))) {
+  
+  # set the value to the equivalent value in the average vector
+  if (i <= 288){
+  new_steps[i] <- average_steps[i]
+  } 
+
+  else{
+ j <- i%%288 + 1
+  new_steps[i] <- average_steps[j]
+  }
+}
+
+new_days_factor <- factor(new_steps)
+
+new_total_steps <- tapply(new_steps, new_days_factor, FUN = sum)
+
+histogram(new_total_steps, breaks = 10, 
+ xlab = "Total number of steps per day", 
+main = "Distribution of total steps per day after imputted values", 
+ col = "lightblue",
+ type = "count")
