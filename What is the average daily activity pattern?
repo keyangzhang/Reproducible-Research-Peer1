@@ -1,0 +1,17 @@
+interval_factor <- factor(interval)
+levels <- nlevels(interval_factor)
+interval_factor <- factor(interval)[1:levels]
+
+average_steps <- tapply(steps, factor(interval), FUN = mean, na.rm = TRUE)
+average_steps <- sapply(average_steps, simplify = array, round, 2)
+
+scales=list( x=list(at = seq(0, 2400, 200)))     
+   
+
+xyplot(as.numeric(average_steps) ~ interval[1:288], 
+type = "l", 
+xlab = "Time interval",
+ ylab = "Average steps", 
+main = "Time series - average steps vs time interval", 
+ scales = scales)
+ 
