@@ -23,3 +23,6 @@ histogram(new_total_steps, breaks = 10,
 main = "Distribution of total steps per day after imputted values", 
  col = "lightblue",
  type = "count")
+
+mean=755.7
+median=612
